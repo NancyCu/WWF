@@ -1,75 +1,95 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sự Kiện Đấu Vật</title>
+  <title>Wrestling Events</title>
   <style>
     body {
       background-color: #000;
       color: #fff;
+      text-align: center;
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     h1 {
-      font-size: 60px;
-      font-weight: bold;
-      color: #FFD700;
-      margin: 20px;
-      text-align: center;
-      text-shadow: 3px 3px 6px #ff0000;
+      margin-top: 20px;
+      font-size: 30px;
     }
     .container {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 40px;
-      margin: 20px;
+      margin: 40px auto;
+      max-width: 1200px;
     }
     .event {
-      text-align: center;
-      flex: 1 1 45%;
-      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 400px;
     }
-    .event img {
+    img {
       width: 100%;
       height: auto;
+      max-width: 100%;
+      margin: 20px auto;
+      display: block;
       border: 4px solid #FFD700;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.3s ease;
     }
-    .event img:hover {
+    img:hover {
       transform: scale(1.05);
     }
-    .event p {
-      font-size: 26px;
-      margin-top: 10px;
-      color: #FFD700;
+    p {
+      font-size: 22px;
+      margin-top: -10px;
+      margin-bottom: 30px;
+    }
+    .event p span {
+      font-size: 16px;
+      color: #bbb;
+    }
+
+    @media (min-width: 1200px) {
+      .event {
+        max-width: 500px;
+      }
+    }
+    @media (max-width: 600px) {
+      .event {
+        max-width: 90%;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>BẤM VÀO HÌNH ĐỂ XEM</h1>
+  <h1>Wrestling Events – Click a Poster to Watch</h1>
 
   <div class="container">
-    <!-- WrestlePalooza -->
     <div class="event">
+      <!-- WrestlePalooza -->
       <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQStQWEz3bg9Rp2dPwdq26FWAf6aMXYV3PxXYzeUhAw6dU8" target="_blank">
         <img src="https://d1yf68t7nbxlyn.cloudfront.net/image/id/-2852852648715108374" alt="WrestlePalooza Poster">
       </a>
-      <p>WrestlePalooza</p>
+      <p>👉 WrestlePalooza 👈<br><span>June 2025</span></p>
     </div>
 
-    <!-- AEW All Out -->
     <div class="event">
+      <!-- AEW All Out -->
       <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQRcFFi82CfIS6Gazjf-H33iASQpbQxKCwsv8v2UmX4asEc" target="_blank">
         <img src="https://preview.redd.it/official-promotional-poster-for-aew-all-out-2025-in-toronto-v0-1dl4oztnpmhf1.jpeg?auto=webp&s=ce43e2360645ac5151e7ded83af7ef85f9190e0e" alt="AEW All Out Poster">
       </a>
-      <p>AEW All Out</p>
+      <p>👉 AEW All Out 👈<br><span>September 2025</span></p>
+    </div>
+
+    <div class="event">
+      <!-- AEW Forbidden Door -->
+      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQSM2IV_URV7RqYzzkvN7-olAVoC1GSW6SxJkxHJObfszj0" target="_blank">
+        <img src="https://assets.khelnow.com/news/uploads/2025/08/AEW-Forbidden-Door-2025-Preview.png" alt="AEW Forbidden Door Poster">
+      </a>
+      <p>👉 AEW Forbidden Door 👈<br><span>August 2025</span></p>
     </div>
   </div>
 </body>
