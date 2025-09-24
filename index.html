@@ -58,7 +58,13 @@
     }
 
     @media (min-width: 1200px) {
+      .container { justify-content: center; }
       .event {
+        flex: 1 1 48%;
+        max-width: 560px;
+      }
+      .event:nth-child(3) {
+        flex: 0 1 700px;
         max-width: 700px;
       }
     }
