@@ -207,7 +207,7 @@
     <a id="macBtn" class="airplay-btn" style="text-decoration:none;" href="x-apple.systempreferences:com.apple.preference.displays">
       🖥️ Mở cài đặt Màn hình (macOS)
     </a>
-    <a class="airplay-btn" href="shortcuts://run-shortcut?name=PressCmdCtrlE">
+    <a id="castBtn" class="airplay-btn" href="shortcuts://run-shortcut?name=PressCmdCtrlE">
       🔁 Mở Cast trong Chrome (⌃⌘E)
     </a>
   </div>
@@ -295,8 +295,25 @@
       var v = document.getElementById('airplayProbe');
       var b = document.getElementById('airplayBtn');
       var macLink = document.getElementById('macBtn');
-      var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
-      if (isIOS && macLink) { macLink.style.display = 'none'; }
+      var castBtn = document.getElementById('castBtn');
+      var ua = navigator.userAgent;
+      var isIOS = /iPhone|iPad|iPod/.test(ua);
+      var isMac = /Macintosh|Mac OS X/.test(ua);
+
+      // iPhone/iPad: show AirPlay button only; hide macOS + Cast
+      if (isIOS) {
+        if (macLink) macLink.style.display = 'none';
+        if (castBtn) castBtn.style.display = 'none';
+        if (b) b.style.display = 'inline-block';
+      }
+
+      // macOS desktop: show macOS + Cast; hide AirPlay picker button
+      if (isMac) {
+        if (b) b.style.display = 'none';
+        if (macLink) macLink.style.display = 'inline-block';
+        if (castBtn) castBtn.style.display = 'inline-block';
+      }
+
       if (!v || !b) return;
 
       // Only Safari exposes this. If not supported, hide the button.
