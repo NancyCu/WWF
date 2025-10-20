@@ -188,6 +188,13 @@
         font-size: 20px;
       }
     }
+
+    /* Hide macOS AirPlay button on iOS/narrow screens */
+    @media (max-width: 900px) {
+      #macBtn {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 
