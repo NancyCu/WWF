@@ -311,6 +311,22 @@
         }
       });
     })();
+    // macOS detection and help message
+    var isMac = /Macintosh|Mac OS X/.test(navigator.userAgent);
+    if (isMac) {
+      const macHelp = document.createElement('div');
+      macHelp.id = 'mac-mirror-help';
+      macHelp.style.display = 'block';
+      macHelp.style.margin = '8px 0 24px';
+      macHelp.style.color = '#ffd700';
+      macHelp.style.fontFamily = "'Roboto Condensed', sans-serif";
+      macHelp.innerHTML = `
+        🖥️ Trên Mac: mở <b>Control Center</b> (biểu tượng công tắc ở góc phải trên cùng) → bấm <b>Screen Mirroring</b> → chọn TV.
+        <div style="color:#bbb;font-size:14px;margin-top:6px;">
+          Mẹo: Vào <i>System Settings → Control Center</i> và bật <i>Show in Menu Bar</i> cho Screen Mirroring để luôn thấy nút này.
+        </div>`;
+      document.body.insertBefore(macHelp, document.querySelector('.container'));
+    }
   </script>
 </body>
 
