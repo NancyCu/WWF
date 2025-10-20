@@ -197,7 +197,7 @@
   <div class="airplay-bar">
     <button id="airplayBtn" class="airplay-btn">🎯 Phát qua AirPlay</button>
     <!-- macOS only: opens Displays settings to enable AirPlay display -->
-    <a class="airplay-btn" style="text-decoration:none;" href="x-apple.systempreferences:com.apple.preference.displays">
+    <a id="macBtn" class="airplay-btn" style="text-decoration:none;" href="x-apple.systempreferences:com.apple.preference.displays">
       🖥️ Mở cài đặt Màn hình (macOS)
     </a>
   </div>
@@ -284,6 +284,9 @@
     (function () {
       var v = document.getElementById('airplayProbe');
       var b = document.getElementById('airplayBtn');
+      var macLink = document.getElementById('macBtn');
+      var isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+      if (isIOS && macLink) { macLink.style.display = 'none'; }
       if (!v || !b) return;
 
       // Only Safari exposes this. If not supported, hide the button.
