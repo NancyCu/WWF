@@ -189,12 +189,6 @@
       }
     }
 
-    /* Hide macOS AirPlay button on iOS/narrow screens */
-    @media (max-width: 900px) {
-      #macBtn {
-        display: none !important;
-      }
-    }
   </style>
 </head>
 
@@ -203,10 +197,6 @@
 
   <div class="airplay-bar">
     <button id="airplayBtn" class="airplay-btn">🎯 Phát qua AirPlay</button>
-    <!-- macOS only: opens Displays settings to enable AirPlay display -->
-    <a id="macBtn" class="airplay-btn" style="text-decoration:none;" href="x-apple.systempreferences:com.apple.preference.displays">
-      🖥️ Mở cài đặt Màn hình (macOS)
-    </a>
     <a id="castBtn" class="airplay-btn" href="shortcuts://run-shortcut?name=PressCmdCtrlE">
       🔁 Mở Cast trong Chrome (⌃⌘E)
     </a>
@@ -294,23 +284,19 @@
     (function () {
       var v = document.getElementById('airplayProbe');
       var b = document.getElementById('airplayBtn');
-      var macLink = document.getElementById('macBtn');
       var castBtn = document.getElementById('castBtn');
       var ua = navigator.userAgent;
       var isIOS = /iPhone|iPad|iPod/.test(ua);
-      var isMac = /Macintosh|Mac OS X/.test(ua);
+      // Treat as real Mac only when UA has "Macintosh" and not iOS tokens
+      var isMac = /Macintosh/.test(ua) && !isIOS;
 
-      // iPhone/iPad: show AirPlay button only; hide macOS + Cast
       if (isIOS) {
-        if (macLink) macLink.style.display = 'none';
+        // iPhone/iPad: show AirPlay only
         if (castBtn) castBtn.style.display = 'none';
         if (b) b.style.display = 'inline-block';
-      }
-
-      // macOS desktop: show macOS + Cast; hide AirPlay picker button
-      if (isMac) {
+      } else {
+        // Desktop (Mac/Windows/Linux): show Cast only
         if (b) b.style.display = 'none';
-        if (macLink) macLink.style.display = 'inline-block';
         if (castBtn) castBtn.style.display = 'inline-block';
       }
 
@@ -332,7 +318,7 @@
       });
     })();
     // macOS detection and help message
-    var isMac = /Macintosh|Mac OS X/.test(navigator.userAgent);
+    var isMac = /Macintosh/.test(navigator.userAgent) && !/iPhone|iPad|iPod/.test(navigator.userAgent);
     if (isMac) {
       const macHelp = document.createElement('div');
       macHelp.id = 'mac-mirror-help';
