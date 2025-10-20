@@ -1,20 +1,85 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sự Kiện Đấu Vật</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap"
+    rel="stylesheet">
   <style>
+    /* AirPlay toolbar */
+    .airplay-bar {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0 0
+    }
+
+    .airplay-btn {
+      appearance: none;
+      border: 0;
+      background: #ffd700;
+      color: #000;
+      font-weight: 800;
+      padding: 10px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 215, 0, .4)
+    }
+
+    .airplay-btn:active {
+      transform: scale(.98)
+    }
+
+    .airplay-note {
+      color: #bbb;
+      font-size: 14px;
+      margin-top: 6px
+    }
+
+    /* Wrestling banner title styles */
+    .instruction-text {
+      font-size: 20px;
+      color: #FFD700;
+      margin-top: 10px;
+      margin-bottom: 40px;
+      font-family: 'Roboto Condensed', sans-serif;
+      text-shadow: 1px 1px 6px #FF4500;
+    }
+
+    .wrestle-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      color: #FFD700;
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 12px #FF0000, 0 0 20px #FFD700;
+      margin-bottom: 0;
+    }
+
+    .wrestle-sub {
+      font-family: 'Roboto Condensed', sans-serif;
+      color: #FF4500;
+      font-size: 36px;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 10px #FFD700;
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+
     * {
       box-sizing: border-box;
     }
+
     body {
       background-color: #000;
       color: #fff;
       text-align: center;
       font-family: Arial, sans-serif;
     }
+
     h1 {
       margin-top: 20px;
       font-size: 56px;
@@ -23,6 +88,7 @@
       font-family: 'Noto Sans TC', 'Arial Black', sans-serif;
       letter-spacing: 2px;
     }
+
     .container {
       display: flex;
       justify-content: center;
@@ -32,6 +98,7 @@
       max-width: 1200px;
       /* Desktop default: row wrap, gap, centered */
     }
+
     .event {
       display: flex;
       flex-direction: column;
@@ -39,6 +106,7 @@
       max-width: 400px;
       flex: 1 1 400px;
     }
+
     img {
       width: 100%;
       height: auto;
@@ -52,32 +120,40 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
+
     img:hover {
       transform: scale(1.05);
     }
+
     p {
       font-size: 22px;
       margin-top: -10px;
       margin-bottom: 30px;
     }
+
     .event p span {
       font-size: 16px;
       color: #bbb;
     }
 
     @media (min-width: 1200px) {
-      .container { justify-content: center; }
+      .container {
+        justify-content: center;
+      }
+
       .event {
         flex: 1 1 45%;
         max-width: 45%;
       }
     }
+
     @media (min-width: 992px) {
       img:hover {
         transform: scale(1.1);
-        box-shadow: 0 0 25px rgba(255,215,0,0.6);
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
       }
     }
+
     /* Tablet breakpoint: two per row */
     @media (max-width: 900px) {
       .event {
@@ -95,42 +171,61 @@
         max-width: 100%;
         padding: 0 12px;
       }
+
       .event {
         width: 100%;
         max-width: 100%;
         flex: 1 1 100%;
       }
+
       .event img,
       img {
         width: 100%;
         max-width: 100%;
       }
+
       .event p {
         font-size: 20px;
       }
     }
   </style>
 </head>
-<body>
-  <h1>BẤM VÀO HÌNH ĐỂ XEM ĐẤU VẬT TRẢ TIỀN CHO MỖI LƯỢT XEM</h1>
 
-    <div class="container">
+<body>
+  <h1 class="wrestle-title">THẺ TRẬN ĐẤU CHÍNH</h1>
+
+  <div class="airplay-bar">
+    <button id="airplayBtn" class="airplay-btn">🎯 Phát qua AirPlay</button>
+    <!-- macOS only: opens Displays settings to enable AirPlay display -->
+    <a class="airplay-btn" style="text-decoration:none;" href="x-apple.systempreferences:com.apple.preference.displays">
+      🖥️ Mở cài đặt Màn hình (macOS)
+    </a>
+  </div>
+  <div class="airplay-note">Nếu không thấy nút AirPlay: mở Trung tâm điều khiển và bật Phản chiếu màn hình.</div>
+
+  <h2 class="wrestle-sub">SỰ KIỆN ĐẤU VẬT TOÀN CẦU</h2>
+  <p class="instruction-text">BẤM VÀO HÌNH ĐỂ XEM ĐẤU VẬT TRẢ TIỀN CHO MỖI LƯỢT XEM</p>
+  <div class="container">
     <div class="event">
       <!-- AEW WrestleDream -->
       <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTRalFRf1AjSKSlbRpuYOzhAYFhHmHRl0YqtVlD9RKsHAw" target="_blank">
-        <img src="https://static0.thesportsterimages.com/wordpress/wp-content/uploads/2025/10/mixcollage-03-oct-2025-11-24-am-5748.jpg?q=49&fit=crop&w=825&dpr=2" alt="AEW WrestleDream Poster">
+        <img
+          src="https://static0.thesportsterimages.com/wordpress/wp-content/uploads/2025/10/mixcollage-03-oct-2025-11-24-am-5748.jpg?q=49&fit=crop&w=825&dpr=2"
+          alt="AEW WrestleDream Poster">
       </a>
       <p>👉 AEW WrestleDream 👈<br><span>Ngày 18 tháng 10, 2025</span></p>
     </div>
     <div class="event">
       <!-- Crown Jewel Perth -->
       <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTob4EuiCxcRJznKd1mAEFIAbhJOKJcjUjI_BZLz4ppisE" target="_blank">
-        <img src="https://platform.cagesideseats.com/wp-content/uploads/sites/54/2025/10/CJCodySeth.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100" alt="Crown Jewel Perth Poster">
+        <img
+          src="https://platform.cagesideseats.com/wp-content/uploads/sites/54/2025/10/CJCodySeth.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100"
+          alt="Crown Jewel Perth Poster">
       </a>
       <p>👉 Crown Jewel Perth 👈<br><span>Ngày 11 tháng 10, 2025</span></p>
     </div>
-    </div>
-    
+  </div>
+
   <div class="container">
     <div class="event">
       <!-- WrestlePalooza -->
@@ -143,7 +238,9 @@
     <div class="event">
       <!-- AEW All Out -->
       <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQRcFFi82CfIS6Gazjf-H33iASQpbQxKCwsv8v2UmX4asEc" target="_blank">
-        <img src="https://preview.redd.it/official-promotional-poster-for-aew-all-out-2025-in-toronto-v0-1dl4oztnpmhf1.jpeg?auto=webp&s=ce43e2360645ac5151e7ded83af7ef85f9190e0e" alt="AEW All Out Poster">
+        <img
+          src="https://preview.redd.it/official-promotional-poster-for-aew-all-out-2025-in-toronto-v0-1dl4oztnpmhf1.jpeg?auto=webp&s=ce43e2360645ac5151e7ded83af7ef85f9190e0e"
+          alt="AEW All Out Poster">
       </a>
       <p>👉 AEW All Out 👈<br><span>Ngày 20 tháng 9, 2025</span></p>
     </div>
@@ -151,7 +248,8 @@
     <div class="event">
       <!-- AEW Forbidden Door -->
       <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQSM2IV_URV7RqYzzkvN7-olAVoC1GSW6SxJkxHJObfszj0" target="_blank">
-        <img src="https://assets.khelnow.com/news/uploads/2025/08/AEW-Forbidden-Door-2025-Preview.png" alt="AEW Forbidden Door Poster">
+        <img src="https://assets.khelnow.com/news/uploads/2025/08/AEW-Forbidden-Door-2025-Preview.png"
+          alt="AEW Forbidden Door Poster">
       </a>
       <p>👉 AEW Forbidden Door 👈<br><span>Ngày 24 tháng 8, 2025</span></p>
     </div>
@@ -159,18 +257,51 @@
     <div class="event">
       <!-- New Event -->
       <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQSqftHhhvvNQaXE51X7oqnOAQi7U8Dsxx0f0yCz2hG4kWs" target="_blank">
-        <img src="https://s.yimg.com/ny/api/res/1.2/lCzNMVwr_a6cVMH3H5ckoQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD02OTk7Y2Y9d2VicA--/https://media.zenfs.com/en/sb_nation_articles_115/06366d1ed250f30e6f27f0376ff84df6" alt="New Event Poster">
+        <img
+          src="https://s.yimg.com/ny/api/res/1.2/lCzNMVwr_a6cVMH3H5ckoQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD02OTk7Y2Y9d2VicA--/https://media.zenfs.com/en/sb_nation_articles_115/06366d1ed250f30e6f27f0376ff84df6"
+          alt="New Event Poster">
       </a>
       <p>👉 TNA+ Victory Road 👈<br><span>Ngày 26 tháng 9, 2025</span></p>
     </div>
-    
-       <div class="event">
+
+    <div class="event">
       <!-- NXT No Mercy -->
       <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQRi-KDXa62oS7wtHbj0TqnOAcm0eWpQMfY8lw5wU7KONAQ" target="_blank">
-        <img src="https://cdn.wrestlingheadlines.com/wp-content/uploads/2025/09/20250912_Match_NXT_NoMarcy_ObaSaints_16x9_date.jpg" alt="NXT No Mercy Poster">
+        <img
+          src="https://cdn.wrestlingheadlines.com/wp-content/uploads/2025/09/20250912_Match_NXT_NoMarcy_ObaSaints_16x9_date.jpg"
+          alt="NXT No Mercy Poster">
       </a>
       <p>👉 NXT No Mercy 👈<br><span>Ngày 27 tháng 9, 2025</span></p>
     </div>
   </div>
+  <!-- Hidden probe video to trigger AirPlay picker (Safari only) -->
+  <video id="airplayProbe" x-webkit-airplay="allow" playsinline muted
+    style="width:1px;height:1px;opacity:0;position:absolute;pointer-events:none;"
+    src="https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/gear1/prog_index.m3u8">
+  </video>
+
+  <script>
+    (function () {
+      var v = document.getElementById('airplayProbe');
+      var b = document.getElementById('airplayBtn');
+      if (!v || !b) return;
+
+      // Only Safari exposes this. If not supported, hide the button.
+      if (typeof v.webkitShowPlaybackTargetPicker !== 'function') {
+        b.style.display = 'none';
+        return;
+      }
+
+      b.addEventListener('click', async function () {
+        try {
+          try { await v.play(); } catch (e) { /* autoplay might fail; it's fine */ }
+          v.webkitShowPlaybackTargetPicker();
+        } catch (e) {
+          alert('AirPlay không khả dụng trong trình duyệt này.');
+        }
+      });
+    })();
+  </script>
 </body>
+
 </html>
