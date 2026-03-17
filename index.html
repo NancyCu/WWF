@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wrestling Events</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap"
-    rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 0 40px;
+    }
+
     /* AirPlay toolbar */
     .airplay-bar {
       display: flex;
       gap: 12px;
       justify-content: center;
       align-items: center;
-      margin: 10px 0 0
+      margin: 10px 0 0;
+      flex-wrap: wrap;
     }
 
     .airplay-btn {
@@ -27,65 +47,55 @@
       padding: 10px 16px;
       border-radius: 9999px;
       cursor: pointer;
-      box-shadow: 0 0 12px rgba(255, 215, 0, .4)
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+      text-decoration: none;
+      display: inline-block;
     }
 
     .airplay-btn:active {
-      transform: scale(.98)
+      transform: scale(0.98);
     }
 
     .airplay-note {
       color: #bbb;
       font-size: 14px;
-      margin-top: 6px
+      margin-top: 6px;
     }
 
-    /* Wrestling banner title styles */
     .instruction-text {
       font-size: 20px;
-      color: #FFD700;
+      color: #ffd700;
       margin-top: 10px;
       margin-bottom: 40px;
-      font-family: 'Roboto Condensed', sans-serif;
-      text-shadow: 1px 1px 6px #FF4500;
+      font-family: "Roboto Condensed", sans-serif;
+      text-shadow: 1px 1px 6px #ff4500;
     }
 
     .wrestle-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: "Bebas Neue", sans-serif;
       font-size: 72px;
-      color: #FFD700;
+      color: #ffd700;
       letter-spacing: 3px;
-      text-shadow: 3px 3px 12px #FF0000, 0 0 20px #FFD700;
-      margin-bottom: 0;
+      text-shadow: 3px 3px 12px #ff0000, 0 0 20px #ffd700;
+      margin: 20px 0 0;
     }
 
     .wrestle-sub {
-      font-family: 'Roboto Condensed', sans-serif;
-      color: #FF4500;
+      font-family: "Roboto Condensed", sans-serif;
+      color: #ff4500;
       font-size: 36px;
       text-transform: uppercase;
-      text-shadow: 1px 1px 10px #FFD700;
+      text-shadow: 1px 1px 10px #ffd700;
       margin-top: 0;
       margin-bottom: 30px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      font-family: Arial, sans-serif;
     }
 
     h1 {
       margin-top: 20px;
       font-size: 56px;
-      color: #FFD700;
-      text-shadow: 3px 3px 8px #FF4500, 0 0 12px #FFA500, 0 0 20px #FFD700;
-      font-family: 'Noto Sans TC', 'Arial Black', sans-serif;
+      color: #ffd700;
+      text-shadow: 3px 3px 8px #ff4500, 0 0 12px #ffa500, 0 0 20px #ffd700;
+      font-family: "Noto Sans TC", "Arial Black", sans-serif;
       letter-spacing: 2px;
     }
 
@@ -96,7 +106,7 @@
       gap: 40px;
       margin: 40px auto;
       max-width: 1200px;
-      /* Desktop default: row wrap, gap, centered */
+      padding: 0 16px;
     }
 
     .event {
@@ -115,10 +125,10 @@
       max-width: 700px;
       margin: 20px auto;
       display: block;
-      border: 4px solid #FFD700;
+      border: 4px solid #ffd700;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     img:hover {
@@ -154,7 +164,6 @@
       }
     }
 
-    /* Tablet breakpoint: two per row */
     @media (max-width: 900px) {
       .event {
         flex: 1 1 48%;
@@ -162,7 +171,6 @@
       }
     }
 
-    /* Mobile stacking: full width, vertical stack, bigger captions */
     @media (max-width: 600px) {
       .container {
         flex-direction: column;
@@ -188,7 +196,6 @@
         font-size: 20px;
       }
     }
-
   </style>
 </head>
 
@@ -197,174 +204,261 @@
 
   <div class="airplay-bar">
     <button id="airplayBtn" class="airplay-btn">🎯 Play with AirPlay</button>
-    <a id="castBtn" class="airplay-btn" href="shortcuts://run-shortcut?name=PressCmdCtrlE">
+    <a
+      id="castBtn"
+      class="airplay-btn"
+      href="shortcuts://run-shortcut?name=PressCmdCtrlE"
+    >
       🔁 Open Cast in Chrome (⌃⌘E)
     </a>
   </div>
-  <div class="airplay-note">If you do not see AirPlay: open Control Center and turn on Screen Mirroring.</div>
+
+  <div class="airplay-note">
+    If you do not see AirPlay: open Control Center and turn on Screen Mirroring.
+  </div>
 
   <h2 class="wrestle-sub">GLOBAL WRESTLING EVENTS</h2>
   <p class="instruction-text">TAP A POSTER TO WATCH THE PAY-PER-VIEW SHOW</p>
+
   <div class="container">
     <div class="event">
+      <!-- WWE Monday Night Raw -->
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQSufOKGaXhmRog1Y21hhIzuAb61m-OcyjdB2mWcNKyauyc"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="mon_raw_03_16_2026.png"
+          alt="WWE Monday Night Raw Poster March 16, 2026"
+        />
+      </a>
+      <p>👉 WWE Monday Night Raw 👈<br /><span>March 16, 2026</span></p>
+    </div>
+
+    <div class="event">
       <!-- AEW Revolution 2026 -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTRWuq54SkLRosS1WqpomY5ASraN2ycQc9oCGozLcHbSbc" target="_blank" rel="noopener noreferrer">
-        <img src="aew_rev_2026.png" alt="AEW Revolution 2026 Poster March 15, 2026">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTRWuq54SkLRosS1WqpomY5ASraN2ycQc9oCGozLcHbSbc"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="aew_rev_2026.png"
+          alt="AEW Revolution 2026 Poster March 15, 2026"
+        />
       </a>
-      <p>👉 AEW Revolution 2026 👈<br><span>March 15, 2026</span></p>
+      <p>👉 AEW Revolution 2026 👈<br /><span>March 15, 2026</span></p>
     </div>
 
     <div class="event">
       <!-- WWE Monday Night Raw -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQQQzwSnJ0_ZSrwbKl8D4E8FASiXcaRObKN9B9VaUh2RDZ4" target="_blank" rel="noopener noreferrer">
-        <img src="mnraw0309.jpg" alt="WWE Monday Night Raw Poster March 9, 2026">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQQQzwSnJ0_ZSrwbKl8D4E8FASiXcaRObKN9B9VaUh2RDZ4"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="mnraw0309.jpg"
+          alt="WWE Monday Night Raw Poster March 9, 2026"
+        />
       </a>
-      <p>👉 WWE Monday Night Raw 👈<br><span>March 9, 2026</span></p>
+      <p>👉 WWE Monday Night Raw 👈<br /><span>March 9, 2026</span></p>
     </div>
 
     <div class="event">
       <!-- WWE Monday Night Raw -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTFEUY5DawbR5OB8E3P5pKPAXWKXthrVJ5z7Zwl5kb0QAc" target="_blank" rel="noopener noreferrer">
-        <img src="mdw.png" alt="WWE Monday Night Raw Poster">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTFEUY5DawbR5OB8E3P5pKPAXWKXthrVJ5z7Zwl5kb0QAc"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="mdw.png" alt="WWE Monday Night Raw Poster" />
       </a>
-      <p>👉 WWE Monday Night Raw 👈<br><span>March 2, 2026</span></p>
+      <p>👉 WWE Monday Night Raw 👈<br /><span>March 2, 2026</span></p>
     </div>
 
     <div class="event">
       <!-- WWE Elimination Chamber 2026 -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQT1ZEB2TnXkRZgX0rEDJlR2AdoTE5N28knbPvCuS36eGSA" target="_blank" rel="noopener noreferrer">
-        <img src="elim.png" alt="WWE Elimination Chamber 2026 Poster">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQT1ZEB2TnXkRZgX0rEDJlR2AdoTE5N28knbPvCuS36eGSA"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="elim.png" alt="WWE Elimination Chamber 2026 Poster" />
       </a>
-      <p>👉 WWE Elimination Chamber 2026 👈<br><span>New event</span></p>
+      <p>👉 WWE Elimination Chamber 2026 👈<br /><span>New event</span></p>
     </div>
 
     <div class="event">
       <!-- AEW WrestleDream -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTRalFRf1AjSKSlbRpuYOzhAYFhHmHRl0YqtVlD9RKsHAw" target="_blank">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTRalFRf1AjSKSlbRpuYOzhAYFhHmHRl0YqtVlD9RKsHAw"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           src="https://static0.thesportsterimages.com/wordpress/wp-content/uploads/2025/10/mixcollage-03-oct-2025-11-24-am-5748.jpg?q=49&fit=crop&w=825&dpr=2"
-          alt="AEW WrestleDream Poster">
+          alt="AEW WrestleDream Poster"
+        />
       </a>
-      <p>👉 AEW WrestleDream 👈<br><span>October 18, 2025</span></p>
+      <p>👉 AEW WrestleDream 👈<br /><span>October 18, 2025</span></p>
     </div>
 
     <div class="event">
       <!-- Crown Jewel Perth -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTob4EuiCxcRJznKd1mAEFIAbhJOKJcjUjI_BZLz4ppisE" target="_blank">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQTob4EuiCxcRJznKd1mAEFIAbhJOKJcjUjI_BZLz4ppisE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           src="https://platform.cagesideseats.com/wp-content/uploads/sites/54/2025/10/CJCodySeth.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100"
-          alt="Crown Jewel Perth Poster">
+          alt="Crown Jewel Perth Poster"
+        />
       </a>
-      <p>👉 Crown Jewel Perth 👈<br><span>October 11, 2025</span></p>
+      <p>👉 Crown Jewel Perth 👈<br /><span>October 11, 2025</span></p>
     </div>
 
     <div class="event">
       <!-- NXT No Mercy -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQRi-KDXa62oS7wtHbj0TqnOAcm0eWpQMfY8lw5wU7KONAQ" target="_blank">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQRi-KDXa62oS7wtHbj0TqnOAcm0eWpQMfY8lw5wU7KONAQ"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           src="https://cdn.wrestlingheadlines.com/wp-content/uploads/2025/09/20250912_Match_NXT_NoMarcy_ObaSaints_16x9_date.jpg"
-          alt="NXT No Mercy Poster">
+          alt="NXT No Mercy Poster"
+        />
       </a>
-      <p>👉 NXT No Mercy 👈<br><span>September 27, 2025</span></p>
+      <p>👉 NXT No Mercy 👈<br /><span>September 27, 2025</span></p>
     </div>
 
     <div class="event">
       <!-- TNA+ Victory Road -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQSqftHhhvvNQaXE51X7oqnOAQi7U8Dsxx0f0yCz2hG4kWs" target="_blank">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQSqftHhhvvNQaXE51X7oqnOAQi7U8Dsxx0f0yCz2hG4kWs"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           src="https://s.yimg.com/ny/api/res/1.2/lCzNMVwr_a6cVMH3H5ckoQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD02OTk7Y2Y9d2VicA--/https://media.zenfs.com/en/sb_nation_articles_115/06366d1ed250f30e6f27f0376ff84df6"
-          alt="TNA+ Victory Road Poster">
+          alt="TNA+ Victory Road Poster"
+        />
       </a>
-      <p>👉 TNA+ Victory Road 👈<br><span>September 26, 2025</span></p>
+      <p>👉 TNA+ Victory Road 👈<br /><span>September 26, 2025</span></p>
     </div>
 
     <div class="event">
       <!-- WrestlePalooza -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQStQWEz3bg9Rp2dPwdq26FWAf6aMXYV3PxXYzeUhAw6dU8" target="_blank">
-        <img src="https://d1yf68t7nbxlyn.cloudfront.net/image/id/-2852852648715108374" alt="WrestlePalooza Poster">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQStQWEz3bg9Rp2dPwdq26FWAf6aMXYV3PxXYzeUhAw6dU8"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://d1yf68t7nbxlyn.cloudfront.net/image/id/-2852852648715108374"
+          alt="WrestlePalooza Poster"
+        />
       </a>
-      <p>👉 WrestlePalooza 👈<br><span>September 20, 2025</span></p>
+      <p>👉 WrestlePalooza 👈<br /><span>September 20, 2025</span></p>
     </div>
 
     <div class="event">
       <!-- AEW All Out -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQRcFFi82CfIS6Gazjf-H33iASQpbQxKCwsv8v2UmX4asEc" target="_blank">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQRcFFi82CfIS6Gazjf-H33iASQpbQxKCwsv8v2UmX4asEc"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
           src="https://preview.redd.it/official-promotional-poster-for-aew-all-out-2025-in-toronto-v0-1dl4oztnpmhf1.jpeg?auto=webp&s=ce43e2360645ac5151e7ded83af7ef85f9190e0e"
-          alt="AEW All Out Poster">
+          alt="AEW All Out Poster"
+        />
       </a>
-      <p>👉 AEW All Out 👈<br><span>September 20, 2025</span></p>
+      <p>👉 AEW All Out 👈<br /><span>September 20, 2025</span></p>
     </div>
 
     <div class="event">
       <!-- AEW Forbidden Door -->
-      <a href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQSM2IV_URV7RqYzzkvN7-olAVoC1GSW6SxJkxHJObfszj0" target="_blank">
-        <img src="https://assets.khelnow.com/news/uploads/2025/08/AEW-Forbidden-Door-2025-Preview.png"
-          alt="AEW Forbidden Door Poster">
+      <a
+        href="https://1drv.ms/v/c/76f02b58d5f10ae1/IQSM2IV_URV7RqYzzkvN7-olAVoC1GSW6SxJkxHJObfszj0"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="https://assets.khelnow.com/news/uploads/2025/08/AEW-Forbidden-Door-2025-Preview.png"
+          alt="AEW Forbidden Door Poster"
+        />
       </a>
-      <p>👉 AEW Forbidden Door 👈<br><span>August 24, 2025</span></p>
+      <p>👉 AEW Forbidden Door 👈<br /><span>August 24, 2025</span></p>
     </div>
   </div>
+
   <!-- Hidden probe video to trigger AirPlay picker (Safari only) -->
-  <video id="airplayProbe" x-webkit-airplay="allow" playsinline muted
+  <video
+    id="airplayProbe"
+    x-webkit-airplay="allow"
+    playsinline
+    muted
     style="width:1px;height:1px;opacity:0;position:absolute;pointer-events:none;"
-    src="https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/gear1/prog_index.m3u8">
-  </video>
+    src="https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/gear1/prog_index.m3u8"
+  ></video>
 
   <script>
     (function () {
-      var v = document.getElementById('airplayProbe');
-      var b = document.getElementById('airplayBtn');
-      var castBtn = document.getElementById('castBtn');
+      var v = document.getElementById("airplayProbe");
+      var b = document.getElementById("airplayBtn");
+      var castBtn = document.getElementById("castBtn");
       var ua = navigator.userAgent;
       var isIOS = /iPhone|iPad|iPod/.test(ua);
-      // Treat as real Mac only when UA has "Macintosh" and not iOS tokens
       var isMac = /Macintosh/.test(ua) && !isIOS;
 
       if (isIOS) {
-        // iPhone/iPad: show AirPlay only
-        if (castBtn) castBtn.style.display = 'none';
-        if (b) b.style.display = 'inline-block';
+        if (castBtn) castBtn.style.display = "none";
+        if (b) b.style.display = "inline-block";
       } else {
-        // Desktop (Mac/Windows/Linux): show Cast only
-        if (b) b.style.display = 'none';
-        if (castBtn) castBtn.style.display = 'inline-block';
+        if (b) b.style.display = "none";
+        if (castBtn) castBtn.style.display = "inline-block";
       }
 
       if (!v || !b) return;
 
-      // Only Safari exposes this. If not supported, hide the button.
-      if (typeof v.webkitShowPlaybackTargetPicker !== 'function') {
-        b.style.display = 'none';
+      if (typeof v.webkitShowPlaybackTargetPicker !== "function") {
+        b.style.display = "none";
         return;
       }
 
-      b.addEventListener('click', async function () {
+      b.addEventListener("click", async function () {
         try {
-          try { await v.play(); } catch (e) { /* autoplay might fail; it's fine */ }
+          try {
+            await v.play();
+          } catch (e) {
+            /* autoplay might fail; that's okay */
+          }
           v.webkitShowPlaybackTargetPicker();
         } catch (e) {
-          alert('AirPlay is not available in this browser.');
+          alert("AirPlay is not available in this browser.");
         }
       });
+
+      if (isMac) {
+        const macHelp = document.createElement("div");
+        macHelp.id = "mac-mirror-help";
+        macHelp.style.display = "block";
+        macHelp.style.margin = "8px 0 24px";
+        macHelp.style.color = "#ffd700";
+        macHelp.style.fontFamily = "'Roboto Condensed', sans-serif";
+        macHelp.innerHTML = `
+          🖥️ On Mac: open <b>Control Center</b> (top-right switch icon) → click <b>Screen Mirroring</b> → choose your TV.
+          <div style="color:#bbb;font-size:14px;margin-top:6px;">
+            Tip: Go to <i>System Settings → Control Center</i> and turn on <i>Show in Menu Bar</i> for Screen Mirroring so this button is easy to find.
+          </div>
+        `;
+        document.body.insertBefore(macHelp, document.querySelector(".container"));
+      }
     })();
-    // macOS detection and help message
-    var isMac = /Macintosh/.test(navigator.userAgent) && !/iPhone|iPad|iPod/.test(navigator.userAgent);
-    if (isMac) {
-      const macHelp = document.createElement('div');
-      macHelp.id = 'mac-mirror-help';
-      macHelp.style.display = 'block';
-      macHelp.style.margin = '8px 0 24px';
-      macHelp.style.color = '#ffd700';
-      macHelp.style.fontFamily = "'Roboto Condensed', sans-serif";
-      macHelp.innerHTML = `
-        🖥️ On Mac: open <b>Control Center</b> (top-right switch icon) → click <b>Screen Mirroring</b> → choose your TV.
-        <div style="color:#bbb;font-size:14px;margin-top:6px;">
-          Tip: Go to <i>System Settings → Control Center</i> and turn on <i>Show in Menu Bar</i> for Screen Mirroring so this button is easy to find.
-        </div>`;
-      document.body.insertBefore(macHelp, document.querySelector('.container'));
-    }
   </script>
 </body>
-
 </html>
